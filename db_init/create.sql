@@ -5,6 +5,9 @@ CREATE DATABASE IF NOT EXISTS projecte
 GRANT ALL PRIVILEGES ON projecte.* TO 'usuari'@'%';
 FLUSH PRIVILEGES;
 
+
+USE projecte;
+
 -- Estructura de la taula `ACTUACIO`
 --
 
@@ -157,3 +160,12 @@ ALTER TABLE `INCIDENCIA`
   ADD CONSTRAINT `INCIDENCIA_ibfk_2` FOREIGN KEY (`departament`) REFERENCES `DEPARTAMENT` (`idDepartament`),
   ADD CONSTRAINT `INCIDENCIA_ibfk_3` FOREIGN KEY (`tipo`) REFERENCES `TIPO` (`idTipo`);
 COMMIT;
+
+
+
+
+-- Afegim algunes dades inicials a la taula incidencia
+
+INSERT INTO incidencia (id) VALUES (1);
+INSERT INTO incidencia (tecnic) VALUES (2);            
+INSERT INTO incidencia (tipo) VALUES ('Mitja');   
