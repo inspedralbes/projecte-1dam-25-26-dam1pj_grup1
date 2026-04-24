@@ -3,14 +3,14 @@
 // Tots els fitxers PHP que utilitzin la connexió a la base de dades han de
 // incloure aquest fitxer al principi del codi PHP.
 // Un cop inclòs, podreu utilitzar la variable $conn per a fer les consultes a la base de dades.
-// require_once  'connexio.php';
+require_once  'connexio.php';
 
 
 // Configuració de la connexió a la base de dades
 $servername = "db"; // Nom del servei definit al docker-compose.yaml
 $username = "usuari"; // Usuari definit al docker-compose.yaml
 $password = "paraula_de_pas"; // Contrasenya definida al docker-compose.yaml
-$dbname = "persones"; // Nom de la base de dades
+$dbname = "projecte"; // Nom de la base de dades
 
 // Quan ja tingueu un codi una mica depurat, i vulgueu fer la gestió dels errors
 // vosaltres mateixos heu de desactivar el comportament predeterminat de mysqli 
@@ -18,7 +18,8 @@ $dbname = "persones"; // Nom de la base de dades
 //  no arriba a l'if de comprovació.
 // Amb la següent línia, el codi en cas d'error de mysql ja no aboratarà i ho podreu
 // gestionar vosaltres mateixos.
-// mysqli_report(MYSQLI_REPORT_OFF);
+
+mysqli_report(MYSQLI_REPORT_OFF);
 
 // Crear la connexió
 $conn = new mysqli($servername, $username, $password, $dbname);

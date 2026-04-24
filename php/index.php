@@ -8,11 +8,10 @@
 </head>
 
 <body>
-    <h1>Pàgina inicial</h1>
-    <p>Aquesta pàgina inclou codi php</p>
+    <h1>Projecte GI3P</h1>
+    <p>Benvinguts al Menu de Gestió incidències informàtiques Institut Pedralbes</p>
     <?php
     echo "<h2>Hola, món!</h2>";
-    echo "<p>Hora actual: " . date("H:i:s") . "</p>";
     ?>
     <h2>Variables</h2>
     <p>Les variables s'han d'utilitzar per a definir la cadena de connexió independentment del codi</p>
@@ -25,8 +24,8 @@
     <div id="menu">
         <hr>
         <p><a href="index.php">Portada</a> </p>
-        <p><a href="llistar.php">Llistar</a></p>
-        <p><a href="crear.php">Crear</a></p>
+        <p><a href="incidencies.php">Llistar</a></p>
+        <p><a href="crearIncidencia.php">Crear</a></p>
     </div>
     <p>Fi de la pàgina</p>
 </body>
