@@ -1,7 +1,10 @@
 # Hi ha 3 contenidors
 # 1. php amb apache (la nostra aplicació web) que la trobaràs a http://localhost:8080
 # 2. mysql (la base de dades), que no és accessible des de l'exterior (el primer cop pot trigar diversos minuts, mireu els logs)
-# 3. adminer (un client web per gestionar el mysql), que la trobaràs a http://localhost:8081
+# 3. adminer (un client web per gestionar el mysql), que la trobaràs a http://localhost:8081 fer docker compose up --build -d i docker compose down -v
+
+
+
 
 
 services:
