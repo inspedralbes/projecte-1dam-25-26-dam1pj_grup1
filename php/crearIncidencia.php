@@ -66,8 +66,7 @@ function crear_incidencia($conn)
                 <input type="text" id="nom" name="nom">
                 <input type="submit" value="Crear">
             </fieldset>
-        </form>
-
+         
          
             <div class="radio-group">
                 <strong>Departament:</strong><br>
@@ -86,6 +85,21 @@ function crear_incidencia($conn)
             <label for="descripció"><strong>Descripció:</strong></label>
             <textarea id="descripció" name="descripció" placeholder="Descriu aqui la teva incidencia detalladament per a que poguem assignarte un tecnic."></textarea>
         </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </form>
+
+         
+           
         
 
 

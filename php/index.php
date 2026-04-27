@@ -29,5 +29,3 @@
     </div>
     <p>Fi de la pàgina</p>
 </body>
-
-</html>
