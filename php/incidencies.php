@@ -26,7 +26,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // Llistar els resultats
     while ($row = $result->fetch_assoc()) {
-        echo "<p>ID incidencia: " . $row["idIncidencia"] . " ID_Tecnic: " . $row["tecnic"];
+        echo "<p>ID incidencia:  " . $row["idIncidencia"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "Prioritat: " . $row["prioritat"] . "   ----------    " . "Descripcio: " . $row["descripcio"] . "Data d'enregistrament: " . date('d-m-Y', strtotime($row["data"]));
         echo " <a href='esborrar.php?id=" . $row["idIncidencia"] . "'>Esborrar</a></p>";
     }
 } else {

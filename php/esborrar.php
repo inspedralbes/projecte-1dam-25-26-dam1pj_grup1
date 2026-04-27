@@ -1,5 +1,7 @@
 <?php
 
+
+
 //Sempre volem tenir una connexió a la base de dades, així que la creem al principi del fitxer
 require_once 'connexio.php';
 // Un cop inclòs el fitxer connexio.php, ja podeu utilitzar la variable $conn per a fer les consultes a la base de dades.
@@ -24,15 +26,15 @@ require_once 'connexio.php';
         // Comprovar si l'ID és un número vàlid
         if (is_numeric($id)) {
             // Preparar la consulta SQL per esborrar la casa
-            $sql = "DELETE FROM INCIDENCIA WHERE id = ?";
+            $sql = "DELETE FROM INCIDENCIA WHERE idIncidencia = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("i", $idIncidencia);
+            $stmt->bind_param("i", $id);
 
             // Executar la consulta i comprovar si s'ha esborrat correctament
             if ($stmt->execute()) {
-                echo "<p class='info'>Casa esborrada amb èxit!</p>";
+                echo "<p class='info'>Incidencia esborrada amb èxit!</p>";
             } else {
-                echo "<p class='error'>Error al esborrar la casa: " . htmlspecialchars($stmt->error) . "</p>";
+                echo "<p class='error'>Error al esborrar la Incidencia: " . htmlspecialchars($stmt->error) . "</p>";
             }
 
             // Tancar la declaració
@@ -46,7 +48,7 @@ require_once 'connexio.php';
         // Comprovar si l'ID és un número vàlid
         if (is_numeric($id)) {
             // Preparar la consulta SQL per obtenir la casa a esborrar
-            $sql = "SELECT id, name FROM cases WHERE id = ?";
+            $sql = "SELECT idIncidencia FROM INCIDENCIA WHERE idIncidencia = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();
@@ -59,15 +61,15 @@ require_once 'connexio.php';
 
                 // Mostrar el formulari, que s'enviarà per POST, per confirmar l'esborrat
                 echo "<form method='POST' action='esborrar.php'>";
-                echo "<fieldset><legend>Casa a esborrar:</legend>" . htmlspecialchars($row["name"]) . "";
+                echo "<fieldset><legend>Incidencia a esborrar:</legend>" . htmlspecialchars($row["idIncidencia"]) . "";
 
                 echo "<br>";
-                echo "<input type='hidden' name='id' value='" . htmlspecialchars($row["id"]) . "'>";
+                echo "<input type='hidden' name='idIncidencia' value='" . htmlspecialchars($row["idIncidencia"]) . "'>";
                 echo "<input type='submit' value='Sí, esborrar'>";
                 echo "</fieldset>";
                 echo "</form>";
             } else {
-                echo "<p class='error'>No s'ha trobat la casa amb ID: " . htmlspecialchars($id) . "</p>";
+                echo "<p class='error'>No s'ha trobat la Incidencia amb ID: " . htmlspecialchars($id) . "</p>";
             }
         } else {
             echo "<p class='error'>ID no vàlid.</p>";
@@ -79,9 +81,7 @@ require_once 'connexio.php';
 
     <div id="menu">
         <hr>
-        <p><a href="index.php">Portada</a> </p>
-        <p><a href="llistar.php">Llistar</a></p>
-        <p><a href="crear.php">Crear</a></p>
+        <p><a href="incidencies.php">&larr;</a></p>
     </div>
 </body>
 
