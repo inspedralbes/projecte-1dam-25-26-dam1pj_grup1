@@ -39,7 +39,7 @@ $conn->close();
 
     <div id="menu">
         <hr>
-        <p><a href="index.php">Portada</a> </p>
+        <p><a href="landingPage.php">Portada</a> </p>
         <p><a href="incidencies.php">Llistar</a></p>
         <p><a href="crearIncidencia.php">Crear</a></p>
     </div>
