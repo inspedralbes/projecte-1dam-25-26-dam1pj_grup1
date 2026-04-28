@@ -1,3 +1,4 @@
+<?php include_once "header.php"; ?>
 <!DOCTYPE html>
 <html lang="ca">
 
@@ -15,11 +16,10 @@
 
 <div id="menuUsuaris">
         <hr>
-        <button><a href="usuaris.php">Sóc Usuari</a> </button>
+        <button><a href="menuUsuaris.php">Sóc Usuari</a> </button>
         <button><a href="tecnic.php">Sóc tecnic</a></button>
         <button><a href="admin.php">Sóc admin</a></button>
     </div>
-
 
 
 
@@ -34,14 +34,6 @@
 </body>     
 
 
-<div id="menu">
-        <hr>
-        <p><a href="index.php">Portada</a> </p>
-        <p><a href="incidencies.php">Llistar</a></p>
-        <p><a href="crearIncidencia.php">Crear</a></p>
-    </div>
-
-
-
-
+<button><a href="index.php">Menu principal &larr;</a> </button>
 </html>
+<?php include_once "footer.php"; ?>

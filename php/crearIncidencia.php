@@ -13,7 +13,7 @@ require_once 'connexio.php';
 function crear_incidencia($conn)
 {
     
-    $nom = $_POST['nom'];
+    $depart = $_POST['nom'];
 
     if (empty($nom)) {
         echo "<p class='error'>El nom de la casa no pot estar buit.</p>";
@@ -23,7 +23,7 @@ function crear_incidencia($conn)
     // Preparar la consulta SQL per inserir una nova casa
     $sql = "INSERT INTO INCIDENCIES (idIncidencia) VALUES (?)";
     $stmt = $conn->prepare($sql);  //La variable $conn la tenim per haver inclòs el fitxer connexio.php
-    $stmt->bind_param("s", $nom);
+    $stmt->bind_param("s", $depart);
 
     // Executar la consulta i comprovar si s'ha inserit correctament
     if ($stmt->execute()) {
@@ -68,22 +68,11 @@ function crear_incidencia($conn)
             </fieldset>
          
          
-            <div class="radio-group">
-                <strong>Departament:</strong><br>
-                <input type="radio" id="matemàtiques" name="departament" value="matemàtiques">
-                <label for="matemàtiques">Matemàtiques</label><br>
-                
-                <input type="radio" id="tecnologia" name="departament" value="tecnologia">
-                <label for="tecnologia">Tecnologia</label><br>
-                
-                <input type="radio" id="ciències" name="departament" value="ciències" checked>
-                <label for="ciències">Ciències</label>
-            </div>
-            </select>
+        
         
             <div>
             <label for="descripció"><strong>Descripció:</strong></label>
-            <textarea id="descripció" name="descripció" placeholder="Descriu aqui la teva incidencia detalladament per a que poguem assignarte un tecnic."></textarea>
+            <textarea id="descripció" name="descripció" placeholder="Descriu aqui la teva incidencia per a que poguem assignarte un tecnic."></textarea>
         </div>
         
         
@@ -105,13 +94,11 @@ function crear_incidencia($conn)
 
         <?php
         //Tanquem l'else
-    }
+    }   
     ?>
     <div id="menu">
         <hr>
-        <p><a href="landingPage.php">Portada</a> </p>
-        <p><a href="incidencies.php">Llistar</a></p>
-        <p><a href="crearIncidencia.php">Crear</a></p>
+        <p><a href="menuUsuaris.php">&larr;</a></p>
     </div>
 </body>
 
