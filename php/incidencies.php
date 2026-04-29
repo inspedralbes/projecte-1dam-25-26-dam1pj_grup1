@@ -1,3 +1,4 @@
+<?php include_once "header.php"; ?>
 <?php
 
 //Sempre volem tenir una connexió a la base de dades, així que la creem al principi del fitxer
@@ -39,11 +40,10 @@ $conn->close();
 
     <div id="menu">
         <hr>
-        <p><a href="landingPage.php">Portada</a> </p>
-        <p><a href="incidencies.php">Llistar</a></p>
-        <p><a href="crearIncidencia.php">Crear</a></p>
+        <p><a href="landingPage.php"></a> </p>
     </div>
 
 </body>
 
 </html>
+<?php include_once "footer.php"; ?>

@@ -25,7 +25,12 @@ padding-top: 0px;
   padding-left: 600px;
 }   
 
+h1 Ttol {
 
+
+
+
+}
 
 
 
@@ -41,8 +46,8 @@ padding-top: 0px;
     <div>Benvinguts al Menu de Gestió incidències informàtiques de  l'Institut Pedralbes</div>
     
  
-    <div>
-        <button><a href="landingPage.php">&rarr;</a> </button>
-    </div>
+
+<div class="form-group"><button class="btn btn-warning btn-lg btn-block"><a href="landingPage.php">&rarr;</a> </button>
+    
     
     <?php include_once "footer.php"; ?>

@@ -1,5 +1,6 @@
+<?php include_once "header.php"; ?>
 <?php
-
+    
 
 
 //Sempre volem tenir una connexió a la base de dades, així que la creem al principi del fitxer
@@ -86,3 +87,4 @@ require_once 'connexio.php';
 </body>
 
 </html>
+<?php include_once "footer.php"; ?>

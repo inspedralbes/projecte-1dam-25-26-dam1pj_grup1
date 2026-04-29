@@ -1,105 +1,25 @@
-<?php
-
-//
-
-require_once 'connexio.php';
-
-
-/**
- * Funció que llegeix els paràmetres del formulari i crea una nova casa a la base de dades.
- * @param mixed $conn
- * @return void
- */
-function crear_incidencia($conn)
-{
-    
-    $depart = $_POST['nom'];
-
-    if (empty($nom)) {
-        echo "<p class='error'>El nom de la casa no pot estar buit.</p>";
-        return;
-    }
-
-    // Preparar la consulta SQL per inserir una nova casa
-    $sql = "INSERT INTO INCIDENCIES (idIncidencia) VALUES (?)";
-    $stmt = $conn->prepare($sql);  //La variable $conn la tenim per haver inclòs el fitxer connexio.php
-    $stmt->bind_param("s", $depart);
-
-    // Executar la consulta i comprovar si s'ha inserit correctament
-    if ($stmt->execute()) {
-        echo "<p class='info'>Incidencia registrada amb èxit!</p>";
-    } else {
-        echo "<p class='error'>Error al crear l'incidencia: " . htmlspecialchars($stmt->error) . "</p>";
-    }
-
-    // Tancar la declaració i la connexió
-    $stmt->close();
-
-}
-
-
-?>
-<!DOCTYPE html>
-<html lang="ca">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTRAMENT D'INCIDENCIES</title>
-</head>
-
-<body>
-    <h1>Crear una Incidencia</h1>
-    <?php
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Si el formulari s'ha enviatc (mètode POST), cridem a la funció per crear la casa
-        crear_incidencia($conn);
-    } else {
-        //Mostrem el formulari per crear una nova casa
-        //Tanquem el php per poder escriure el codi HTML de forma més còmoda.
-        ?>
-        <form method="POST" action="crear.php">
-            <fieldset>
-                <legend>Registrar Incidencia</legend>
-                <label for="nom">Descripció de l'incidencia:</label>
-                <input type="text" id="nom" name="nom">
-                <input type="submit" value="Crear">
-            </fieldset>
-         
-         
-        
-        
-            <div>
-            <label for="descripció"><strong>Descripció:</strong></label>
-            <textarea id="descripció" name="descripció" placeholder="Descriu aqui la teva incidencia per a que poguem assignarte un tecnic."></textarea>
-        </div>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+<?php include_once "header.php"; ?>
+<div class="row">
+    <div class="col-12">
+        <h1>Registrar Incidencia</h1>
+        <form action="registrar.php" method="POST">
+            <div class="form-group">
+                <label for="departament">Departament al que pertanys:</label>
+            <select id="departament" name="departaments">
+             <option value="1">Matematiques</option>
+             <option value="2">Informatica</option>
+             <option value="3">Ciències</option>
+              <option value="4">Anglés</option>
+            </select>
+            </div>
+            <div class="form-group">
+                <label for="descripcio">Descripció de l'incidencia</label>
+                <textarea placeholder="Descripción" class="form-control" name="descripcion" id="descripcion" cols="30" rows="10" required></textarea>
+            </div>
+            <div class="form-group"><button class="btn btn-success">Guardar</button></div>
         </form>
-
-         
-           
-        
-
-
-        <?php
-        //Tanquem l'else
-    }   
-    ?>
-    <div id="menu">
-        <hr>
-        <p><a href="menuUsuaris.php">&larr;</a></p>
     </div>
-</body>
+</div>
 
-</html>
+<div class="form-group"><button class="btn btn-warning"><a href="menuUsuaris.php">&larr;</a> </button>
+<?php include_once "footer.php"; ?>     

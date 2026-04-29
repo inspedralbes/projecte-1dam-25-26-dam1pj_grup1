@@ -23,7 +23,7 @@ require_once 'connexio.php';
 
     <div id="menuUsuaris">
         <hr>
-        <button><a href="registrar.php">Registrar Una nova Incidencia</a> </button>
+        <button><a href="crearIncidencia.php">Registrar Una nova Incidencia</a> </button>
         <button><a href="llistarIncidenciesusuaris.php">Consultar l'Estat de una incidència:</a></button>
         <button><a href="landingPage.php">&larr;</a> </button>
         
