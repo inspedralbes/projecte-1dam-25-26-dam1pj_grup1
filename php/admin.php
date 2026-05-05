@@ -1,22 +1,35 @@
- body {
-background-color: rgb(198, 223, 228);
+<?php include_once "header.php"; ?>
 
- }
+
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Admin</title>
+</head>
+
+
+<body>
+    <p>Benvinguts al Menu de Gestió incidències informàtiques Institut Pedralbes</p>
+
+
+
+
+    <p>Quina opció vols realitzar?</p>
  
- 
- h1 {
- padding-top: 200px;
-  padding-right: 300px;
-  padding-bottom: 300px;
-  padding-left: 750px;
-  background-color: rgb(198, 223, 228);
-} 
+    <div id="menuUsuaris">
+        <hr>
+        <button><a href="incidencies.php">Veure incidencies</a> </button>
+        <button><a href="modificar.php">Modificar:</a></button>
+    </div>
 
 
-div {   
 
-padding-top: 0px;
-  padding-right: 500px;
-  padding-bottom: 0px;
-  padding-left: 600px;
-}   
+
+
+
+
+
+<?php include_once "footer.php"; ?>

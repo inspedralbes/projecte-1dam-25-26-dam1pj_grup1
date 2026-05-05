@@ -1,13 +1,12 @@
 
-CREATE DATABASE IF NOT EXISTS `projecte`
+CREATE DATABASE IF NOT EXISTS `a25alenieelb_projecte`
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
-GRANT ALL PRIVILEGES ON projecte.* TO 'usuari'@'%';
+GRANT ALL PRIVILEGES ON a25alenieelb_projecte.* TO 'a25alenieelb_addmin'@'%';
 FLUSH PRIVILEGES;
 
-
-USE `projecte`;
+USE `a25alenieelb_projecte`;
 
 
 SET FOREIGN_KEY_CHECKS = 0;

@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
     // Llistar els resultats
     while ($row = $result->fetch_assoc()) {
         echo "<p>ID incidencia:  " . $row["idIncidencia"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "Prioritat: " . $row["prioritat"] . "   ----------    " . "Descripcio: " . $row["descripcio"] . "Data d'enregistrament: " . date('d-m-Y', strtotime($row["data"]));
-        echo " <a href='esborrar.php?id=" . $row["idIncidencia"] . "'>Esborrar</a></p>";
+        echo " <a href='modificar.php?id=" . $row["idIncidencia"] . "'>Modificar</a></p>";
     }
 } else {
     echo "<p>No hi ha dades a mostrar.</p>";
@@ -40,9 +40,8 @@ $conn->close();
 
     <div id="menu">
         <hr>
-        <p><a href="landingPage.php"></a> </p>
+        <p><a href="tecnic.php">&larr;</a></p>
     </div>
-
 </body>
 
 </html>

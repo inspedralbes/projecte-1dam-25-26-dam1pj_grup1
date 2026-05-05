@@ -25,7 +25,10 @@ require_once 'connexio.php';
         <hr>
         <button><a href="crearIncidencia.php">Registrar Una nova Incidencia</a> </button>
         <button><a href="llistarIncidenciesusuaris.php">Consultar l'Estat de una incidència:</a></button>
-        <button><a href="landingPage.php">&larr;</a> </button>
-        
     </div>
-    <?php include_once "footer.php"; ?>
+
+    
+    <button><a href="landingPage.php">&larr;</a> </button>
+   
+   
+     <?php include_once "footer.php"; ?>
