@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_GET['id'];
 
     if (is_numeric($id)) {
-        $sql = "SELECT idIncidencia, titol, descripcio, estat FROM INCIDENCIA WHERE idIncidencia = ?";
+        $sql = "SELECT idIncidencia, departament, descripcio, tecnic FROM INCIDENCIA WHERE idIncidencia = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -39,17 +39,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<fieldset><legend>Modificar Incidencia:</legend>";
             echo "<input type='hidden' name='idIncidencia' value='" . htmlspecialchars($row["idIncidencia"]) . "'>";
 
-            echo "<label for='titol'>Títol:</label><br>";
-            echo "<input type='text' name='titol' id='titol' value='" . htmlspecialchars($row["titol"]) . "' required><br><br>";
+            echo "<label for='departament'>Departament:</label><br>";
+            echo "<input type='text' name='departament' id='departament' value='" . htmlspecialchars($row["departament"]) . "' required><br><br>";
 
             echo "<label for='descripcio'>Descripció:</label><br>";
             echo "<textarea name='descripcio' id='descripcio' rows='4' cols='50' required>" . htmlspecialchars($row["descripcio"]) . "</textarea><br><br>";
 
-            echo "<label for='estat'>Estat:</label><br>";
-            echo "<select name='estat' id='estat'>";
-            $estats = ['Oberta', 'En procés', 'Tancada'];
-            foreach ($estats as $opcio) {
-                $selected = ($row["estat"] === $opcio) ? "selected" : "";
+            echo "<label for='tecnic'>Tècnic:</label><br>";
+            echo "<input type='text' name='tecnic' id='tecnic' value='" . htmlspecialchars($row["tecnic"]) . "' required><br><br>";
+
                 echo "<option value='" . htmlspecialchars($opcio) . "' $selected>" . htmlspecialchars($opcio) . "</option>";
             }
             echo "</select><br><br>";
@@ -67,6 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 } else {
     echo "<p class='error'>No s'ha especificat cap ID.</p>";
+
 }
+
 ?>
 <?php include_once "footer.php"; ?>
