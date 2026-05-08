@@ -22,7 +22,7 @@
     <div id="menuUsuaris">
         <hr>
         <button><a href="registrarActuacio.php">Registrar actuació:</a> </button>
-        <button><a href="llistarIncidenciesusuaris.php">Veure incidencie assignades:</a></button>
+        <button><a href="incidenciesAssignades.php">Veure incidencie assignades:</a></button>
     </div>
 
 

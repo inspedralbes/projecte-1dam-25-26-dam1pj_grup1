@@ -22,45 +22,35 @@ require_once 'connexio.php';
     
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Si el formulari s'ha enviat (mètode POST), procedim a esborrar la casa 
         $id = $_POST['idIncidencia'];
-        // Comprovar si l'ID és un número vàlid
         if (is_numeric($id)) {
-            // Preparar la consulta SQL per esborrar la casa
             $sql = "DELETE FROM INCIDENCIA WHERE idIncidencia = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $id);
 
-            // Executar la consulta i comprovar si s'ha esborrat correctament
             if ($stmt->execute()) {
                 echo "<p class='info'>Incidencia esborrada amb èxit!</p>";
             } else {
                 echo "<p class='error'>Error al esborrar la Incidencia: " . htmlspecialchars($stmt->error) . "</p>";
             }
 
-            // Tancar la declaració
             $stmt->close();
         } else {
             echo "<p class='error'>ID no vàlid.</p>";
         }
     } elseif (isset($_GET['id'])) {
-        // Comprovar si s'ha rebut  l'ID de la casa via GET (a la URL esborrar.php?id=XXX)
         $id = $_GET['id'];
-        // Comprovar si l'ID és un número vàlid
         if (is_numeric($id)) {
-            // Preparar la consulta SQL per obtenir la casa a esborrar
-            $sql = "SELECT idIncidencia FROM INCIDENCIA WHERE idIncidencia = ?";
+
+        $sql = "SELECT idIncidencia FROM INCIDENCIA WHERE idIncidencia = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
 
-            // Comprovar si s'ha trobat la casa
             if ($result->num_rows > 0) {
-                // Mostrar la casa a esborrar
                 $row = $result->fetch_assoc();
 
-                // Mostrar el formulari, que s'enviarà per POST, per confirmar l'esborrat
                 echo "<form method='POST' action='esborrar.php'>";
                 echo "<fieldset><legend>Incidencia a esborrar:</legend>" . htmlspecialchars($row["idIncidencia"]) . "";
 

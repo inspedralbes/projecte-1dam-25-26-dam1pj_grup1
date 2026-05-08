@@ -58,29 +58,29 @@ function crear_incidencia($conn)
                 <legend>Selecciona el departament al que pertannys:</legend>
                   
                 <div>
-             <input type="radio" id="1" name="Matematiques" value="huey" checked />
+             <input type="radio" id="1" name="Matematiques" value="1" checked />
              <label for="1">Matematiques</label>
                </div>
 
               <div>
-                 <input type="radio" id="2" name="Informatica" value="dewey" />
+                 <input type="radio" id="2" name="Informatica" value="2" />
                  <label for="2">Informatica </label>
               </div>
 
              <div>
-                 <input type="radio" id="3" name="Ciencies" value="louie" />
+                 <input type="radio" id="3" name="Ciencies" value="3" />
                  <label for="3"> Ciencies</label>
              </div>
 
               <div>
-                 <input type="radio" id="4" name="Angles" value="louie" />
+                 <input type="radio" id="4" name="Angles" value="4" />
                  <label for="4"> Anglés</label>
              </div>
 
                  </fieldset>
                 
                 <div> <h5>Descripció de la vostra incidencia:</h5></div>
-               <textarea name="message" rows="20" cols="40">
+               <textarea name="descripcio" rows="20" cols="4">
                 </textarea>
                <div>
                 <input type="submit" value="Enviar">

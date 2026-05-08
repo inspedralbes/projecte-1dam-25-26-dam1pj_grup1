@@ -4,14 +4,15 @@ require_once 'connexio.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['idIncidencia'];
-    $titol = $_POST['titol'];
+    $tecnic = $_POST['tecnic'];
     $descripcio = $_POST['descripcio'];
-    $estat = $_POST['estat'];
+    $departament = $_POST['departament'];
+    $tipo = $_POST['tipo'];
 
     if (is_numeric($id)) {
-        $sql = "UPDATE INCIDENCIA SET titol = ?, descripcio = ?, estat = ? WHERE idIncidencia = ?";
+        $sql = "UPDATE INCIDENCIA SET tecnic = ?, descripcio = ?, departament = ?, tipo = ? WHERE idIncidencia = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $titol, $descripcio, $estat, $id);
+        $stmt->bind_param("sssii", $tecnic, $descripcio, $departament, $tipo, $id);
 
         if ($stmt->execute()) {
             echo "<p class='info'>Incidencia modificada amb èxit!</p>";
@@ -27,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_GET['id'];
 
     if (is_numeric($id)) {
-        $sql = "SELECT idIncidencia, departament, descripcio, tecnic FROM INCIDENCIA WHERE idIncidencia = ?";
+        $sql = "SELECT * FROM INCIDENCIA WHERE idIncidencia = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -43,21 +44,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<input type='text' name='departament' id='departament' value='" . htmlspecialchars($row["departament"]) . "' required><br><br>";
 
             echo "<label for='descripcio'>Descripció:</label><br>";
-            echo "<textarea name='descripcio' id='descripcio' rows='4' cols='50' required>" . htmlspecialchars($row["descripcio"]) . "</textarea><br><br>";
+            echo "<textarea name='descripcio' id='descripcio' required>" . htmlspecialchars($row["descripcio"]) . "</textarea><br><br>";
 
             echo "<label for='tecnic'>Tècnic:</label><br>";
             echo "<input type='text' name='tecnic' id='tecnic' value='" . htmlspecialchars($row["tecnic"]) . "' required><br><br>";
 
-                echo "<option value='" . htmlspecialchars($opcio) . "' $selected>" . htmlspecialchars($opcio) . "</option>";
-            }
-            echo "</select><br><br>";
+            echo "<label for='tipo'>Tipus:</label><br>";
+            echo "<input type='text' name='tipo' id='tipo' value='" . htmlspecialchars($row["tipo"]) . "' required><br><br>";
 
             echo "<input type='submit' value='Guardar canvis'>";
             echo "</fieldset>";
             echo "</form>";
         } else {
             echo "<p class='error'>No s'ha trobat la Incidencia amb ID: " . htmlspecialchars($id) . "</p>";
-        }
+        }    
         $stmt->close();
     } else {
         echo "<p class='error'>ID no vàlid.</p>";

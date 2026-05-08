@@ -24,7 +24,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
-        echo "<p>ID incidencia:  " . $row["idIncidencia"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "Prioritat: " . $row["prioritat"] . "   ----------    " . "Descripcio: " . $row["descripcio"] . "Data d'enregistrament: " . date('d-m-Y', strtotime($row["data"]));
+        echo "<p>ID incidencia:  " . $row["idIncidencia"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "Prioritat: " . $row["prioritat"] . "   ----------    " . "Descripcio: " . $row["descripcio"] . "Data d'enregistrament: " . date('d-m-Y', strtotime($row["dataRegis"]));
         echo " <a href='modificar.php?id=" . $row["idIncidencia"] . "'>Modificar</a></p>";
     }
 } else {
