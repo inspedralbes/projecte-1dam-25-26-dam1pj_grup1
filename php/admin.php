@@ -22,12 +22,12 @@
     <div id="menuUsuaris">
         <hr>
         <button><a href="incidencies.php">Veure incidencies</a> </button>
-        <button><a href="modificar.php">Modificar:</a></button>
+        <button><a href="modificar.php">Assignar un tecnic:</a></button>
     </div>
 
 
 
-
+<button><a href="landingPage.php">&larr;</a> </button>
 
 
 

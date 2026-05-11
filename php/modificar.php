@@ -3,16 +3,17 @@
 require_once 'connexio.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['idIncidencia'];
+    $id = $_POST['idIncidencia'];   
     $tecnic = $_POST['tecnic'];
     $descripcio = $_POST['descripcio'];
     $departament = $_POST['departament'];
     $tipo = $_POST['tipo'];
+    $prioritat = $_POST['prioritat'];
 
     if (is_numeric($id)) {
-        $sql = "UPDATE INCIDENCIA SET tecnic = ?, descripcio = ?, departament = ?, tipo = ? WHERE idIncidencia = ?";
+        $sql = "UPDATE INCIDENCIA SET tecnic = ?, descripcio = ?, departament = ?, tipo = ?, prioritat = ? WHERE idIncidencia = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssii", $tecnic, $descripcio, $departament, $tipo, $id);
+        $stmt->bind_param("sssiii", $tecnic, $descripcio, $departament, $tipo, $prioritat, $id);
 
         if ($stmt->execute()) {
             echo "<p class='info'>Incidencia modificada amb èxit!</p>";
@@ -38,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $row = $result->fetch_assoc();
             echo "<form method='POST' action='modificar.php'>";
             echo "<fieldset><legend>Modificar Incidencia:</legend>";
-            echo "<input type='hidden' name='idIncidencia' value='" . htmlspecialchars($row["idIncidencia"]) . "'>";
+            echo "<input type='text' name='idIncidencia' value='" . htmlspecialchars($row["idIncidencia"]) . "'>";
 
             echo "<label for='departament'>Departament:</label><br>";
             echo "<input type='text' name='departament' id='departament' value='" . htmlspecialchars($row["departament"]) . "' required><br><br>";
@@ -51,6 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "<label for='tipo'>Tipus:</label><br>";
             echo "<input type='text' name='tipo' id='tipo' value='" . htmlspecialchars($row["tipo"]) . "' required><br><br>";
+
+            echo "<label for='prioritat'>Prioritat:</label><br>";
+            echo "<input type='number' name='prioritat' id='prioritat' value='" . htmlspecialchars($row["prioritat"]) . "' required><br><br>";
 
             echo "<input type='submit' value='Guardar canvis'>";
             echo "</fieldset>";

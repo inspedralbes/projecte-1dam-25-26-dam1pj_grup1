@@ -16,15 +16,16 @@
 
 body {
 
-
-
-
-
     background-color: rgb(105, 189, 206);
-
-
 }
 
+
+   btn {
+        background-color: rgb(173, 15, 15);
+    }
+
+
+    
 
     </style>
 

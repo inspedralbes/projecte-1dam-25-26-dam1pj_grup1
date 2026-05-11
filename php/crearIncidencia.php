@@ -1,103 +1,99 @@
 <?php include_once "header.php"; ?>
 <?php
-
-
 require_once 'connexio.php';
+
 /**
- * Funció que llegeix els paràmetres del formulari i crea una nova casa a la base de dades.
+ * Funció que llegeix els paràmetres del formulari i crea una nova incidència a la base de dades.
  * @param mixed $conn
  * @return void
  */
 function crear_incidencia($conn)
 {
-    $departament = $_POST['departament'];
-    $descripcio = $_POST['descripcio'];
+    $departament = $_POST['departament'] ?? '';
+    $descripcio = $_POST['descripcio'] ?? '';
+    $dataRegis = date('Y-m-d H:i:s');
 
     if (empty($descripcio)) {
         echo "<p class='error'>Has d'escriure una descripció.</p>";
         return;
     }
 
-    $sql = "INSERT INTO INCIDENCIA (departament,descripcio) VALUES (?)";
-    $stmt = $conn->prepare($sql);  
-    $stmt->bind_param("s", $departament,$descripcio);
+    $sql = "INSERT INTO INCIDENCIA (departament, descripcio, dataRegis) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    
+    $stmt->bind_param("sss", $departament, $descripcio, $dataRegis);
 
     if ($stmt->execute()) {
-        echo "<p class='info'>Incudencia registrada amb èxit!</p>";
+        echo "<p class='info'>Incidència registrada amb èxit!</p>";
     } else {
-        echo "<p class='error'>Error al registrar l'incidencia: " . htmlspecialchars($stmt->error) . "</p>";
+        echo "<p class='error'>Error al registrar la incidència: " . htmlspecialchars($stmt->error) . "</p>";
     }
-
     $stmt->close();
-
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="ca">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrament d'incidencies</title>
+    <title>Registrament d'incidències</title>
 </head>
-
 <body>
-    <h1>Registrament D'incidencies</h1>
-    <?php
+<h1>Registrament d'Incidències</h1>
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        crear_incidencia($conn);
-    } else {
-        ?>
-        <form method="POST" action="crearIncidencia.php">
-            <fieldset>
-                <legend>Empleneu el formulari si us plau:</legend>
-                <fieldset>
-                
-                <legend>Selecciona el departament al que pertannys:</legend>
-                  
-                <div>
-             <input type="radio" id="1" name="Matematiques" value="1" checked />
-             <label for="1">Matematiques</label>
-               </div>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    crear_incidencia($conn);
+} else {
+?>
 
-              <div>
-                 <input type="radio" id="2" name="Informatica" value="2" />
-                 <label for="2">Informatica </label>
-              </div>
+<form method="POST" action="crearIncidencia.php">
+    <fieldset>
+        <legend>Empleneu el formulari si us plau:</legend>
+        <fieldset>
+            <legend>Selecciona el departament al qual pertanys:</legend>
 
-             <div>
-                 <input type="radio" id="3" name="Ciencies" value="3" />
-                 <label for="3"> Ciencies</label>
-             </div>
+            <div>
+                <input type="radio" id="dep1" name="departament" value="1" />
+                <label for="dep1">Matemàtiques</label>
+            </div>
+            <div>
+                <input type="radio" id="dep2" name="departament" value="2" />
+                <label for="dep2">Informàtica</label>
+            </div>
+            <div>
+                <input type="radio" id="dep3" name="departament" value="3" />
+                <label for="dep3">Ciències</label>
+            </div>
+            <div>
+                <input type="radio" id="dep4" name="departament" value="4" />
+                <label for="dep4">Anglès</label>
+            </div>
+        </fieldset>
 
-              <div>
-                 <input type="radio" id="4" name="Angles" value="4" />
-                 <label for="4"> Anglés</label>
-             </div>
+        <div><h5>Descripció de la vostra incidència:</h5></div>
 
-                 </fieldset>
-                
-                <div> <h5>Descripció de la vostra incidencia:</h5></div>
-               <textarea name="descripcio" rows="20" cols="4">
-                </textarea>
-               <div>
-                <input type="submit" value="Enviar">
-               </div>  
-
-            </fieldset>
-        </form>
+        <textarea name="descripcio" rows="10" cols="50"></textarea>
 
 
-        <?php
-    }
-    ?>
-</body>
+        <div>Data d'enregistrament: <?php echo date('d-m-Y H:i:s'); ?></div>
+
+        <div>
+            <input type="submit" value="Enviar">
+        </div>
+    </fieldset>
+</form>
+
+<?php
+}
+?>
+
 <div id="menu">
-        <hr>
-        <p><a href="menuUsuaris.php">&larr;</a></p>
-    </div>
+    <hr>
+    <p><a href="menuUsuaris.php">&larr;</a></p>
+</div>
 
+</body>
 </html>
 <?php include_once "footer.php"; ?>
