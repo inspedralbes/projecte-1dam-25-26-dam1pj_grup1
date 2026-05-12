@@ -28,7 +28,7 @@ require_once 'connexio.php';
     </div>
 
     
-    <button><a href="landingPage.php">&larr;</a> </button>
+    
    
    
      <?php include_once "footer.php"; ?>

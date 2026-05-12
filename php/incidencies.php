@@ -43,10 +43,7 @@ if ($result && $result->num_rows > 0): ?>
 
 <?php $conn->close(); ?>
 
-<div id="menu">
-    <hr>
-    <p><a href="tecnic.php">&larr;</a></p>
-</div>
+
 
 </body>
 </html>

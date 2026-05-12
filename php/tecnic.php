@@ -29,7 +29,6 @@
 
 
 
-<button><a href="landingPage.php">&larr;</a> </button>
 
 
 

@@ -19,12 +19,9 @@ require_once 'connexio.php';
     <h1>Llistat d'incidencies</h1>
     <?php
 
-    // Consulta SQL per obtenir totes les files de la taula 'incidencia'
 $sql = "SELECT * FROM INCIDENCIA";
 $result = $conn->query($sql);
-// Comprovar si hi ha resultats
 if ($result->num_rows > 0) {
-    // Llistar els resultats
     while ($row = $result->fetch_assoc()) {
         echo "<p>ID incidencia:  " . $row["idIncidencia"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "Prioritat: " . $row["prioritat"] . "   ----------    " . "Descripcio: " . $row["descripcio"] . "Data d'enregistrament: " . date('d-m-Y', strtotime($row["dataRegis"]));
         echo " <a href='modifcar.php?id=" . $row["idIncidencia"] . "'>Modificar</a></p>";
@@ -36,11 +33,7 @@ if ($result->num_rows > 0) {
 $conn->close();
 ?>
 
-    <div id="menu">
-        <hr>
-        <p><a href="menuUsuaris.php">&larr;</a> </p>
-    </div>
-
+ 
 </body>
 
 </html>

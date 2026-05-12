@@ -89,10 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<div id="menu">
-    <hr>
-    <p><a href="menuUsuaris.php">&larr;</a></p>
-</div>
 
 </body>
 </html>
