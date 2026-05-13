@@ -1,12 +1,14 @@
 </main>
-<footer class="px-2 py-2 fixed-bottom bg-dark">
 
+<footer class="fixed-bottom bg-dark text-center py-1 shadow-lg border-top border-secondary">
+    
+    <button 
+        onclick="history.go(-1);" 
+        class="btn btn-outline-light btn-sm px-3 rounded-pill">
+        ← Tornar
+    </button>
 
-
-<button onclick="history.go(-1);">Back </button>
-
-
-        
 </footer>
+
 </body>
 </html>
