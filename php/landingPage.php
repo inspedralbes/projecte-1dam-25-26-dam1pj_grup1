@@ -19,14 +19,6 @@
             background-color: rgb(198, 223, 228);
         }
 
-
-        div {
-            padding-top: 0px;
-            padding-right: 500px;
-            padding-bottom: 0px;
-            padding-left: 600px;
-        }
-
         button {
             font-size: 20px;
             font-family: 'Arial', sans-serif;

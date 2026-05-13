@@ -8,6 +8,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Tecnics</title>
+    <style>
+        p {
+            font-size: 40px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        button {
+            font-family: 'Arial', sans-serif;
+            text-shadow: 10px 10px 10px rgb(4, 164, 204);
+        }
+    </style>
 </head>
 
 

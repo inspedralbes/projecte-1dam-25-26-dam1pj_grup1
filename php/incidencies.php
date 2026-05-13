@@ -3,6 +3,54 @@
 require_once 'connexio.php';
 ?>
 </head>
+<style>
+    p {
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        text-shadow: 10px 10px 10px rgb(4, 164, 204);
+        padding-top: 20px;
+        padding-right: 20px;                
+        padding-bottom: 20px;
+        padding-left: 20px;
+        background-color: rgb(198, 223, 228);
+    }   
+
+     button {
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        text-shadow: 10px 10px 10px rgb(4, 164, 204);
+        background-color: rgb(198, 223, 228);
+        border: none;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+
+    }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 4px solid black;
+    color: black;
+    background-color: rgb(255, 255, 255);
+
+    th {
+        padding: 10px;
+        text-align: left;
+        background-color: rgb(152, 153, 153);
+    }
+
+}
+
+btn a {
+    text-decoration: none;
+    color: black;
+}
+    </style>
 <body>
 
 <h1>Llistat d'incidències</h1>
