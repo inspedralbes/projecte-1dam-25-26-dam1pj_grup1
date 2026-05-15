@@ -1,14 +1,9 @@
 <?php include("header.php");
 
 $mysqli = include_once "connexio.php";
-$resultat = $mysqli->query("
-SELECT DEPARTAMENT.nom, COUNT(*) AS numInc
-FROM DEPARTAMENT
-JOIN INCIDENCIA
-    ON INCIDENCIA.departament = DEPARTAMENT.idDepartament
-WHERE INCIDENCIA.dataFi IS NULL
-GROUP BY DEPARTAMENT.idDepartament, DEPARTAMENT.nom;
-");
+
+$resultat = $mysqli->query("SELECT nom, temps, numInc FROM consumDepartaments");
+
 $departaments = $resultat->fetch_all(MYSQLI_ASSOC);
 
 $tempsArray = array();
@@ -39,8 +34,6 @@ $deptsArray[] = $unDepartament["nom"];?>
 </tbody>
 
 <?php } ?>
-
-
 <script>
 
  const ctx = document.getElementById('myChart');
@@ -83,12 +76,11 @@ $deptsArray[] = $unDepartament["nom"];?>
 
 </script>
 
-
 <?php
 
 $mysqli = include_once "connexio.php";
 
-$resultat = $mysqli->query("SELECT idIncidencia, DEPARTAMENT.nom as departament, descripcio, DATE(dataIni) as dataIni, prioritat FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.IdDept = INCIDENCIA.departament WHERE dataFi IS NULL ORDER BY prioritat DESC");
+$resultat = $mysqli->query("SELECT idInc, DEPARTAMENT.nom as aula, descripcio, DATE(dataIni) as dataIni, prioritat FROM INCIDENCIA JOIN DEPARTAMENT ON DEPARTAMENT.IdDept = INCIDENCIA.aula WHERE dataFi IS NULL ORDER BY prioritat DESC");
 
 $incidencies = $resultat->fetch_all(MYSQLI_ASSOC);
 
@@ -143,19 +135,19 @@ $incidencies = $resultat->fetch_all(MYSQLI_ASSOC);
 
            <div class="editar">
 
-               <a href="modificar_incidencia.php?id=<?php echo $unaIncidencia["idIncidencia"] ?>">
+               <a href="modificar_incidencia.php?id=<?php echo $unaIncidencia["idInc"] ?>">
 
                    <div class="incidencia prioritat<?php echo $unaIncidencia["prioritat"] ?>">
 
                        <div class="id">
 
-                           <p><?php echo $unaIncidencia["idIncidencia"] ?></p>
+                           <p><?php echo $unaIncidencia["idInc"] ?></p>
 
                        </div>
 
                        <div class="aula">
 
-                           <p><?php echo $unaIncidencia["departament"] ?></p>
+                           <p><?php echo $unaIncidencia["aula"] ?></p>
 
                        </div>
 

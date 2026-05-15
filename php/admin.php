@@ -34,7 +34,7 @@
         <hr>
         <button><a href="incidencies.php">Veure incidencies</a> </button>
         <button><a href="assignarTecnic.php">Assignar un tecnic:</a></button>
-        <button><a href="logger.php">Veure estadístiques:</a></button>
+        <button><a href="estadistiques.php">Veure estadístiques:</a></button>
     </div>
 
 

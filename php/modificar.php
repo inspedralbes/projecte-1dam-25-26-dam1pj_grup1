@@ -55,10 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<input type='text' name='tipo' id='tipo' value='" . htmlspecialchars($row["tipo"]) . "' required><br><br>";
 
             echo "<label for='prioritat'>Prioritat:</label><br>";
-            echo "<input type='number' name='prioritat' id='prioritat' value='" . htmlspecialchars($row["prioritat"]) . "' required><br><br>";
-
-            echo "<label for='dataIni'>Data d'enregistrament:</label><br>";
-            echo "<input type='datetime-local' name='dataIni' id='dataIni' value='" . htmlspecialchars($row["dataIni"]) . "' required><br><br>";
+            echo "<select name='prioritat' id='prioritat' required>";
+            echo "<option value='Alta' " . ($row["prioritat"] == "Alta" ? "selected" : "") . ">Alta</option>";
+            echo "<option value='Mitja' " . ($row["prioritat"] == "Mitja" ? "selected" : "") . ">Mitja</option>";
+            echo "<option value='Baixa' " . ($row["prioritat"] == "Baixa" ? "selected" : "") . ">Baixa</option>";
+            echo "</select><br><br>";
 
             echo "<input type='submit' value='Guardar canvis'>";
             echo "</fieldset>";
@@ -77,4 +78,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Incidencia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;        
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+        }       
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;             
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;       
+            padding: 10px 20px;     
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .info {             
+            color: green;
+            font-weight: bold;
+        }   
+    </style>
+</head>
+<body>
 <?php include_once "footer.php"; ?>

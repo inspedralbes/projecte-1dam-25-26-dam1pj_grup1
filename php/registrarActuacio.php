@@ -39,11 +39,6 @@ textarea {
 }
 
 </style>
-
-
-
-
-
 </head>
 <body>
 <h1>Benvingut al Menu de gestió d'Actuacions</h1>
@@ -52,13 +47,16 @@ $sql = "SELECT * FROM ACTUACIO";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while ($row = $result->fetch_assoc()) {
-echo "<p>ID Actuacio:  " . $row["idActuacio"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "ID_Incidencia: " . $row["incidencia"] . "   ------   " . "Descripcio: " . $row["descripcio"] . "   ------   " . "Data d'enregistrament: " . ($row["dataIni"] ? date('d-m-Y', strtotime($row["dataIni"])) : "Sense data");
+echo "<p>ID Actuacio:  " . $row["idActuacio"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "ID_Incidencia: " . $row["incidencia"] . "   ------   " . "Descripcio: " . $row["descripcio"] . "   ------   " . "Data d'enregistrament: " . ($row["data"] ? date('d-m-Y', strtotime($row["data"])) : "Sense data");
 echo "</p>";
     }
 } else {
 echo "<p>No hi ha dades a mostrar.</p>";
 }
 $conn->close();
+?>
+
+<?php
 ?>
 <form method="POST" action="registrarActuacio.php">
 <label for="idIncidencia">ID de la incidència a la qual es vol registrar l'actuació:</label><br>

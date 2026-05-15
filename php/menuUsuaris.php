@@ -35,6 +35,18 @@ require_once 'connexio.php';
             letter-spacing: 0.7px;
         }
 
+        button a {
+            text-decoration: none;
+            color: inherit;
+        }   
+
+        button a:hover {
+            color: #007BFF;
+        }   
+
+        
+
+
 
     </style>
 </head>
