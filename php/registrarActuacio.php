@@ -52,7 +52,7 @@ $sql = "SELECT * FROM ACTUACIO";
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
 while ($row = $result->fetch_assoc()) {
-echo "<p>ID Actuacio:  " . $row["idActuacio"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "ID_Incidencia: " . $row["incidencia"] . "   ------   " . "Descripcio: " . $row["descripcio"] . "   ------   " . "Data d'enregistrament: " . ($row["data"] ? date('d-m-Y', strtotime($row["data"])) : "Sense data");
+echo "<p>ID Actuacio:  " . $row["idActuacio"] .  "     ------   " . " ID_Tecnic: " . $row["tecnic"] . "   ------   " . "ID_Incidencia: " . $row["incidencia"] . "   ------   " . "Descripcio: " . $row["descripcio"] . "   ------   " . "Data d'enregistrament: " . ($row["dataIni"] ? date('d-m-Y', strtotime($row["dataIni"])) : "Sense data");
 echo "</p>";
     }
 } else {

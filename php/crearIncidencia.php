@@ -11,21 +11,22 @@ function crear_incidencia($conn)
 {
     $departament = $_POST['departament'] ?? '';
     $descripcio = $_POST['descripcio'] ?? '';
-    $dataRegis = date('Y-m-d H:i:s');
+    $dataIni = date('Y-m-d H:i:s');
 
     if (empty($descripcio)) {
         echo "<p class='error'>Has d'escriure una descripció.</p>";
         return;
     }
 
-    $sql = "INSERT INTO INCIDENCIA (departament, descripcio, dataRegis) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO INCIDENCIA (departament, descripcio, dataIni) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     
-    $stmt->bind_param("sss", $departament, $descripcio, $dataRegis);
+    $stmt->bind_param("sss", $departament, $descripcio, $dataIni);
 
     if ($stmt->execute()) {
         echo "<p class='info'>Incidència registrada amb èxit!</p>";
+        echo "<p class='info'>ID de la incidència: " . $stmt->insert_id . "</p>";
     } else {
         echo "<p class='error'>Error al registrar la incidència: " . htmlspecialchars($stmt->error) . "</p>";
     }
@@ -38,6 +39,59 @@ function crear_incidencia($conn)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrament d'incidències</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        fieldset {
+            border: 1px solid #000000;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .info {
+            color: green;
+        }
+    </style>
 </head>
 <body>
 <h1>Registrament d'Incidències</h1>

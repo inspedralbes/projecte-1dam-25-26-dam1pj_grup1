@@ -34,7 +34,7 @@ if ($result->num_rows > 0): ?>
 <td><?= htmlspecialchars($row["descripcio"]) ?></td>
 <td><?= htmlspecialchars($row["tipo"]) ?></td>
 <td><?= htmlspecialchars($row["prioritat"]) ?></td>
-<td><?= $row["dataRegis"] ? date('d-m-Y', strtotime($row["dataRegis"])) : "Sense data" ?></td>
+<td><?= $row["dataIni"] ? date('d-m-Y', strtotime($row["dataIni"])) : "Sense data" ?></td>
 <td><?= htmlspecialchars($row["tecnic"]) ?></td>
 <td><?= htmlspecialchars($row["estat"]) ?></td>
 </tr>

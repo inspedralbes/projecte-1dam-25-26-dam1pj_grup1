@@ -1,6 +1,6 @@
 </main>
 
-<footer class="fixed-bottom bg-dark text-center py-1 shadow-lg border-top border-secondary">
+<footer class="fixed-bottom bg-dark text-center py-0 shadow-lg border-top border-secondary">
     
     <button 
         onclick="history.go(-1);" 

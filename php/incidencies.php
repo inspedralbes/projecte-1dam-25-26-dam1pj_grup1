@@ -28,7 +28,7 @@ require_once 'connexio.php';
     }
 
 table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -46,7 +46,7 @@ table, th, td {
 
 }
 
-btn a {
+btn btn-primary {
     text-decoration: none;
     color: black;
 }
@@ -56,7 +56,13 @@ btn a {
 <h1>Llistat d'incidències</h1>
 
 <?php
-$sql = "SELECT * FROM INCIDENCIA ORDER BY prioritat ASC";
+$sql = "SELECT 
+    INCIDENCIA.*, 
+    TECNIC.nom AS nomTecnic
+FROM INCIDENCIA
+JOIN TECNIC 
+    ON INCIDENCIA.tecnic = TECNIC.idTecnic
+ORDER BY INCIDENCIA.prioritat ASC";
 $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0): ?>
@@ -64,9 +70,10 @@ if ($result && $result->num_rows > 0): ?>
         <thead>
             <tr>
                 <th>ID Incidència</th>
-                <th>ID Tècnic</th>  
+                <th>ID Tècnic i NomTècnic</th>  
                 <th>Prioritat</th>
                 <th>Descripció</th>
+                <th>Estat</th>
                 <th>Data d'enregistrament</th>
 
             </tr>
@@ -75,11 +82,14 @@ if ($result && $result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
             <tr>
                 <td><?= htmlspecialchars($row["idIncidencia"]) ?></td>
-                <td><?= htmlspecialchars($row["tecnic"]) ?></td>
+                <td><?= htmlspecialchars($row["tecnic"]) ?> - <?= htmlspecialchars($row["nomTecnic"]) ?></td>
                 <td><?= htmlspecialchars($row["prioritat"]) ?></td>
                 <td><?= htmlspecialchars($row["descripcio"]) ?></td>
-                <td><?= date('d-m-Y', strtotime($row["dataRegis"])) ?></td>
+                <td><?= htmlspecialchars($row["estat"]) ?></td>
+                <td><?= date('d-m-Y', strtotime($row["dataIni"])) ?></td>
                 <td><a class="btn btn-primary" href="modificar.php?id=<?= urlencode($row["idIncidencia"]) ?>">Modificar</a></td>
+
+                <td><a class="btn btn-primary" href="esborrar.php?id=<?= urlencode($row["idIncidencia"]) ?>">Eliminar</a></td>
             </tr>
             <?php endwhile; ?>
         </tbody>
@@ -96,3 +106,5 @@ if ($result && $result->num_rows > 0): ?>
 </body>
 </html>
 <?php include_once "footer.php"; ?>
+
+

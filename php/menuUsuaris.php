@@ -10,6 +10,33 @@ require_once 'connexio.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Usuaris</title>
+    <style>
+        #menuUsuaris {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        #menuUsuaris button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #menuUsuaris button:hover {
+            background-color: #f0f0f0;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            letter-spacing: 0.7px;
+        }
+
+
+    </style>
 </head>
 
 
@@ -24,7 +51,7 @@ require_once 'connexio.php';
     <div id="menuUsuaris">
         <hr>
         <button><a href="crearIncidencia.php">Registrar Una nova Incidencia</a> </button>
-        <button><a href="llistarIncidenciesusuaris.php">Consultar l'Estat de una incidència:</a></button>
+        <button><a href="incidenciesUsuaris.php">Consultar l'Estat de una incidència:</a></button>
     </div>
 
     

@@ -9,11 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $departament = $_POST['departament'];
     $tipo = $_POST['tipo'];
     $prioritat = $_POST['prioritat'];
+    $dataIni = date('Y-m-d H:i:s');
 
     if (is_numeric($id)) {
-        $sql = "UPDATE INCIDENCIA SET tecnic = ?, descripcio = ?, departament = ?, tipo = ?, prioritat = ? WHERE idIncidencia = ?";
+        $sql = "UPDATE INCIDENCIA SET tecnic = ?, descripcio = ?, departament = ?, tipo = ?, prioritat = ?, dataIni = ? WHERE idIncidencia = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssiii", $tecnic, $descripcio, $departament, $tipo, $prioritat, $id);
+        $stmt->bind_param("sssiiis", $tecnic, $descripcio, $departament, $tipo, $prioritat, $dataIni, $id);
 
         if ($stmt->execute()) {
             echo "<p class='info'>Incidencia modificada amb èxit!</p>";
@@ -55,6 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo "<label for='prioritat'>Prioritat:</label><br>";
             echo "<input type='number' name='prioritat' id='prioritat' value='" . htmlspecialchars($row["prioritat"]) . "' required><br><br>";
+
+            echo "<label for='dataIni'>Data d'enregistrament:</label><br>";
+            echo "<input type='datetime-local' name='dataIni' id='dataIni' value='" . htmlspecialchars($row["dataIni"]) . "' required><br><br>";
 
             echo "<input type='submit' value='Guardar canvis'>";
             echo "</fieldset>";
