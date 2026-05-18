@@ -6,3 +6,7 @@ Aquest esel projecte GI3P de AlejandroNieto i Adam Tafzi  consisteix en una peti
 
  #Taiga
  https://tree.taiga.io/project/a25alenieelb-dam1pjg1/timeline
+ #URL VIDEO
+ https://youtu.be/K1Xuifl1Qzo?is=b1y3R2wH1KcqRsH0
+ #PRODUCCIÓ
+ http://g1.dam.inspedralbes.cat/
