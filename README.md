@@ -3,3 +3,6 @@ Aquest esel projecte GI3P de AlejandroNieto i Adam Tafzi  consisteix en una peti
 
 
  El projecte esta gairebe acabat pero falten un parell de punts per resoldre,
+
+ #Taiga
+ https://tree.taiga.io/project/a25alenieelb-dam1pjg1/timeline
